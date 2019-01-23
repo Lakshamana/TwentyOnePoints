@@ -1,0 +1,36 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.arjuna.health",
+            "nativeLanguage": "en"
+        },
+        "jhipsterVersion": "5.7.1",
+        "applicationType": "monolith",
+        "baseName": "TwentyOnePoints",
+        "packageName": "com.arjuna.health",
+        "packageFolder": "com/arjuna/health",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": "elasticsearch",
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "YmQ1OTEzNmU2YjFkY2U3YjFmYjQ1ODg4MDM3M2RlMjU3MmIxMmU1NTJlOTVlNmY1NTU1NWQ5NzNlNGJjOTc2NjFmMmY5ZTk1MGY5ZTM0MzIyNDNjODMxOTMwZWJjYWRiNjFlNTFjNTk1OTQyNjZkZjgwZGY3OTMyOTRhMGJmYWQ=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": ["gatling", "protractor"],
+        "jhiPrefix": "jhi",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "en",
+        "languages": ["en", "pt-br"]
+    }
+}
