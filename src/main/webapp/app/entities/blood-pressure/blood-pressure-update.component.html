@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-blood-pressure-heading" jhiTranslate="twentyOnePointsApp.bloodPressure.home.createOrEditLabel">Create or edit a Blood Pressure</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!bloodPressure.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="bloodPressure.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="twentyOnePointsApp.bloodPressure.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="bloodPressure.date"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.date?.dirty && editForm.controls.date?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.date?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="twentyOnePointsApp.bloodPressure.systolic" for="field_systolic">Systolic</label>
+                    <input type="number" class="form-control" name="systolic" id="field_systolic"
+                        [(ngModel)]="bloodPressure.systolic" required/>
+                    <div [hidden]="!(editForm.controls.systolic?.dirty && editForm.controls.systolic?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.systolic?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.systolic?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="twentyOnePointsApp.bloodPressure.diastolic" for="field_diastolic">Diastolic</label>
+                    <input type="number" class="form-control" name="diastolic" id="field_diastolic"
+                        [(ngModel)]="bloodPressure.diastolic" required/>
+                    <div [hidden]="!(editForm.controls.diastolic?.dirty && editForm.controls.diastolic?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.diastolic?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.diastolic?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="twentyOnePointsApp.bloodPressure.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="bloodPressure.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === bloodPressure.user?.id ? bloodPressure.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

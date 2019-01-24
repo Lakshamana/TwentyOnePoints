@@ -1,0 +1,36 @@
+entity Points {
+	date LocalDate required,
+    exercise Boolean required,
+    meals Boolean required,
+    alcohol Boolean required,
+    notes String
+}
+
+entity Weight {
+	date LocalDate required,
+    weight Integer required
+}
+
+entity BloodPressure {
+	date LocalDate required,
+    systolic Integer required,
+    diastolic Integer required
+}
+
+enum WeightUnits {
+    KG, LB
+}
+
+entity Preferences {
+	weeklyGoal Integer required min(10) max(21),
+    weightUnits WeightUnits required
+}
+
+relationship ManyToOne {
+	Points{user(login)} to User,
+    Weight{user(login)} to User,
+    BloodPressure{user(login)} to User,
+    Preferences{user(login)} to User
+}
+
+paginate Points with pagination
